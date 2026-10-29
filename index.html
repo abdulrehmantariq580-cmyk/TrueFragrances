@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         * {
             margin: 0;
@@ -17,7 +18,7 @@
         }
 
         body {
-            background-color: #ffffff; 
+            background-color: #ffffff;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
         }
@@ -50,9 +51,9 @@
             display: flex;
             justify-content: center;
         }
-        
+
         .logo-container img {
-            height: 40px; 
+            height: 60px;
             width: auto;
             object-fit: contain;
         }
@@ -124,7 +125,7 @@
             width: 100%;
             aspect-ratio: 16 / 9;
             max-height: 800px;
-            background-color: #111111; 
+            background-color: #111111;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -148,7 +149,7 @@
         .slide img {
             width: 100%;
             height: 100%;
-            object-fit: contain; 
+            object-fit: contain;
         }
 
         /* Animated Navigation Dots */
@@ -176,8 +177,10 @@
         }
 
         .dot.active {
-            background-color: #c09b3d; /* Matches the golden top bar */
-            width: 30px; /* Expands to a pill shape for animation */
+            background-color: #c09b3d;
+            /* Matches the golden top bar */
+            width: 30px;
+            /* Expands to a pill shape for animation */
             border-radius: 10px;
         }
 
@@ -195,12 +198,12 @@
             justify-content: center;
             align-items: center;
             font-size: 35px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             z-index: 1000;
             text-decoration: none;
             transition: transform 0.3s ease;
         }
-        
+
         .whatsapp-float:hover {
             transform: scale(1.1);
         }
@@ -218,37 +221,54 @@
         }
 
         @media (max-width: 990px) {
-            .nav-menu { display: none; }
-            .mobile-menu-btn { display: block; }
-            header { padding: 15px 5%; }
-            .header-icons .user-icon { display: none; }
-            
-            .hero-slider { 
-                height: auto; 
-                aspect-ratio: 16 / 9; 
+            .nav-menu {
+                display: none;
             }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            header {
+                padding: 15px 5%;
+            }
+
+            .header-icons .user-icon {
+                display: none;
+            }
+
+            .hero-slider {
+                height: auto;
+                aspect-ratio: 16 / 9;
+            }
+
             .slider-dots {
                 bottom: 10px;
             }
+
             .dot {
                 width: 8px;
                 height: 8px;
             }
+
             .dot.active {
                 width: 20px;
             }
         }
+
         /* Option 2 CSS */
-.elegant-divider {
-    width: 100%;
-    height: 3px;
-    background: linear-gradient(to right, #111111, #c09b3d, #111111);
-    box-shadow: 0 2px 15px rgba(192, 155, 61, 0.4); /* Golden glow */
-    position: relative;
-    z-index: 10;
-}
+        .elegant-divider {
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, #111111, #c09b3d, #111111);
+            box-shadow: 0 2px 15px rgba(192, 155, 61, 0.4);
+            /* Golden glow */
+            position: relative;
+            z-index: 10;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="top-bar">
@@ -256,9 +276,9 @@
     </div>
 
     <header>
-        <button class="mobile-menu-btn">
-            <i class="fas fa-bars"></i>
-        </button>
+        <button class="mobile-menu-btn" onclick="openMenu()">
+    <i class="fas fa-bars"></i>
+</button>
 
         <div class="logo-container">
             <!-- Logo src yahan dalna hai -->
@@ -275,13 +295,13 @@
         </ul>
 
         <div class="header-icons">
-            <a href="#"><i class="fas fa-search"></i></a>
-            <a href="#" class="user-icon"><i class="far fa-user"></i></a>
-            <a href="#">
-                <i class="fas fa-shopping-bag"></i>
-                <span class="cart-badge">0</span>
-            </a>
-        </div>
+    <a href="#" onclick="openSearch(event)"><i class="fas fa-search"></i></a>
+    <a href="#" class="user-icon"><i class="far fa-user"></i></a>
+    <a href="#" onclick="openCart(event)">
+        <i class="fas fa-shopping-bag"></i>
+        <span class="cart-badge">0</span>
+    </a>
+</div>
     </header>
 
     <section class="hero-slider">
@@ -309,7 +329,7 @@
         </div>
     </section>
     <!-- Option 2: Golden Divider -->
-<div class="elegant-divider"></div>
+    <div class="elegant-divider"></div>
     <a href="#" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
@@ -325,14 +345,14 @@
             // Remove active classes
             slides[currentSlide].classList.remove('active');
             dots[currentSlide].classList.remove('active');
-            
+
             // Set new index
             currentSlide = index;
-            
+
             // Add active classes
             slides[currentSlide].classList.add('active');
             dots[currentSlide].classList.add('active');
-            
+
             // Reset interval when manually clicked
             resetInterval();
         }
@@ -350,26 +370,37 @@
         // Start auto-slider
         resetInterval();
     </script>
-    
-    
-    
+
+
+
     <style>
         /* Base styles (Agar aap alag se test kar rahe hain) */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #ffffff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
 
         /* =========================================
            PART 2: BRAND BADGES SECTION
            ========================================= */
         .brand-badges {
-            background-color: #111111; /* Dark background to match header/hero */
+            background-color: #111111;
+            /* Dark background to match header/hero */
             padding: 30px 5%;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
             gap: 40px;
-            border-bottom: 1px solid rgba(192, 155, 61, 0.2); /* Subtle gold line */
+            border-bottom: 1px solid rgba(192, 155, 61, 0.2);
+            /* Subtle gold line */
         }
 
         .badge-item {
@@ -386,7 +417,8 @@
 
         .badge-item i {
             font-size: 24px;
-            color: #c09b3d; /* Golden accent */
+            color: #c09b3d;
+            /* Golden accent */
         }
 
         .badge-item span {
@@ -401,7 +433,8 @@
            ========================================= */
         .categories-section {
             padding: 70px 5%;
-            background-color: #ffffff; /* White background jaisa aapne pehle manga tha */
+            background-color: #ffffff;
+            /* White background jaisa aapne pehle manga tha */
             text-align: center;
         }
 
@@ -434,7 +467,7 @@
             border-radius: 8px;
             overflow: hidden;
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         /* Category Images (Blank src for you) */
@@ -452,7 +485,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(to bottom, rgba(17,17,17,0.1), rgba(17,17,17,0.8));
+            background: linear-gradient(to bottom, rgba(17, 17, 17, 0.1), rgba(17, 17, 17, 0.8));
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
@@ -471,7 +504,8 @@
         }
 
         .category-overlay .explore-btn {
-            color: #c09b3d; /* Gold */
+            color: #c09b3d;
+            /* Gold */
             font-size: 13px;
             font-weight: 500;
             text-decoration: none;
@@ -484,15 +518,17 @@
 
         /* Hover Effects */
         .category-card:hover img {
-            transform: scale(1.08); /* Slight zoom */
+            transform: scale(1.08);
+            /* Slight zoom */
         }
 
         .category-card:hover .category-overlay {
-            background: linear-gradient(to bottom, rgba(17,17,17,0.3), rgba(17,17,17,0.9));
+            background: linear-gradient(to bottom, rgba(17, 17, 17, 0.3), rgba(17, 17, 17, 0.9));
         }
 
         .category-card:hover h3 {
-            color: #c09b3d; /* Text turns gold */
+            color: #c09b3d;
+            /* Text turns gold */
         }
 
         .category-card:hover .explore-btn {
@@ -508,192 +544,218 @@
                 align-items: flex-start;
                 padding: 30px 10%;
             }
+
             .category-card {
                 height: 280px;
             }
         }
+
         @media (max-width: 768px) {
-    /* Badges section ke liye list layout */
-    .brand-badges {
-        gap: 15px;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 20px 5%; /* Padding thori kam ki hai */
-    }
 
-    /* Categories section ko 2 columns ki grid banaya */
-    .category-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
-        gap: 15px; /* Cards ke darmiyan spacing thori kam ki hai */
-    }
+            /* Badges section ke liye list layout */
+            .brand-badges {
+                gap: 15px;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px 5%;
+                /* Padding thori kam ki hai */
+            }
 
-    /* Cards ki height mobile par thori choti ki hai taake proportionate lagen */
-    .category-card {
-        height: 200px; /* Mobile par thori kam height behtar lagegi */
-    }
+            /* Categories section ko 2 columns ki grid banaya */
+            .category-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 columns for mobile */
+                gap: 15px;
+                /* Cards ke darmiyan spacing thori kam ki hai */
+            }
 
-    /* Text thora chota kiya taake 2 columns mein fit aaye */
-    .category-overlay h3 {
-        font-size: 16px;
-        margin-bottom: 5px;
-    }
+            /* Cards ki height mobile par thori choti ki hai taake proportionate lagen */
+            .category-card {
+                height: 200px;
+                /* Mobile par thori kam height behtar lagegi */
+            }
 
-    .category-overlay .explore-btn {
-        font-size: 11px;
-    }
-}
-@media (max-width: 768px) {
-    /* Badges ko 2x2 Grid mein convert kiya */
-    .brand-badges {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* 2 columns */
-        gap: 20px 15px; /* Top/Bottom gap 20px, Left/Right gap 15px */
-        padding: 25px 5%;
-        justify-items: center; /* Items ko horizontally center karega */
-        align-items: start; /* Items ko vertically top par align karega */
-    }
+            /* Text thora chota kiya taake 2 columns mein fit aaye */
+            .category-overlay h3 {
+                font-size: 16px;
+                margin-bottom: 5px;
+            }
 
-    /* Icon upar aur text neeche karne ke liye flex-direction column */
-    .badge-item {
-        flex-direction: column; 
-        text-align: center;
-        gap: 8px; /* Icon aur text ke darmiyan space */
-    }
+            .category-overlay .explore-btn {
+                font-size: 11px;
+            }
+        }
 
-    /* Mobile ke liye icon thora resize kiya */
-    .badge-item i {
-        font-size: 22px; 
-    }
+        @media (max-width: 768px) {
 
-    /* Text chota aur multi-line adjust kiya */
-    .badge-item span {
-        font-size: 11px; 
-        line-height: 1.4;
-        max-width: 100px; /* Text ko center mein rakhne ke liye constraint */
-    }
-}
-/* Thin Golden Strip Container */
-.brand-badges-strip {
-  width: 100%;
-  overflow: hidden;
-  /* Premium Metallic Gold Gradient Background */
-  background: linear-gradient(90deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
-  color: #000000; /* Black text */
-  padding: 8px 0; /* Thin height */
-  white-space: nowrap;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-}
+            /* Badges ko 2x2 Grid mein convert kiya */
+            .brand-badges {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                /* 2 columns */
+                gap: 20px 15px;
+                /* Top/Bottom gap 20px, Left/Right gap 15px */
+                padding: 25px 5%;
+                justify-items: center;
+                /* Items ko horizontally center karega */
+                align-items: start;
+                /* Items ko vertically top par align karega */
+            }
 
-/* Moving Track */
-.marquee-track {
-  display: flex;
-  align-items: center;
-  gap: 4rem; /* Items ke beech clean space */
-  width: max-content;
-  animation: scroll-left 22s linear infinite;
-}
+            /* Icon upar aur text neeche karne ke liye flex-direction column */
+            .badge-item {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+                /* Icon aur text ke darmiyan space */
+            }
 
-/* Pause animation on hover */
-.brand-badges-strip:hover .marquee-track {
-  animation-play-state: paused;
-}
+            /* Mobile ke liye icon thora resize kiya */
+            .badge-item i {
+                font-size: 22px;
+            }
 
-/* Badge Item Styling - Pure Icons & Text in 1 Line */
-.badge-item {
-  display: inline-flex;
-  align-items: center;
-  flex-direction: row; /* Horizontal alignment Ensure karne ke liye */
-  gap: 8px; /* Icon aur Text ke beech space */
-  font-size: 13px; /* Sleek & Thin look */
-  font-weight: 600;
-  letter-spacing: 0.8px;
-  text-transform: uppercase;
-  color: #000000; /* Pure Black Text */
-}
+            /* Text chota aur multi-line adjust kiya */
+            .badge-item span {
+                font-size: 11px;
+                line-height: 1.4;
+                max-width: 100px;
+                /* Text ko center mein rakhne ke liye constraint */
+            }
+        }
 
-/* Icon styling */
-.badge-item i {
-  color: #000000; /* Pure Black Icon */
-  font-size: 14px; /* Icon size text ke sath perfectly match karega */
-}
+        /* Thin Golden Strip Container */
+        .brand-badges-strip {
+            width: 100%;
+            overflow: hidden;
+            /* Premium Metallic Gold Gradient Background */
+            background: linear-gradient(90deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+            color: #000000;
+            /* Black text */
+            padding: 8px 0;
+            /* Thin height */
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+        }
 
-/* Smooth Infinite Loop */
-@keyframes scroll-left {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
-}
+        /* Moving Track */
+        .marquee-track {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            /* Items ke beech clean space */
+            width: max-content;
+            animation: scroll-left 22s linear infinite;
+        }
 
-/* Mobile Friendly Adjustment */
-@media (max-width: 768px) {
-  .brand-badges-strip {
-    padding: 6px 0; /* Aur bhi sleek mobile ke liye */
-  }
+        /* Pause animation on hover */
+        .brand-badges-strip:hover .marquee-track {
+            animation-play-state: paused;
+        }
 
-  .marquee-track {
-    gap: 2.5rem;
-    animation-duration: 16s;
-  }
-  
-  .badge-item {
-    font-size: 11px;
-  }
-  
-  .badge-item i {
-    font-size: 12px;
-  }
-}
+        /* Badge Item Styling - Pure Icons & Text in 1 Line */
+        .badge-item {
+            display: inline-flex;
+            align-items: center;
+            flex-direction: row;
+            /* Horizontal alignment Ensure karne ke liye */
+            gap: 8px;
+            /* Icon aur Text ke beech space */
+            font-size: 13px;
+            /* Sleek & Thin look */
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            text-transform: uppercase;
+            color: #000000;
+            /* Pure Black Text */
+        }
 
+        /* Icon styling */
+        .badge-item i {
+            color: #000000;
+            /* Pure Black Icon */
+            font-size: 14px;
+            /* Icon size text ke sath perfectly match karega */
+        }
+
+        /* Smooth Infinite Loop */
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Mobile Friendly Adjustment */
+        @media (max-width: 768px) {
+            .brand-badges-strip {
+                padding: 6px 0;
+                /* Aur bhi sleek mobile ke liye */
+            }
+
+            .marquee-track {
+                gap: 2.5rem;
+                animation-duration: 16s;
+            }
+
+            .badge-item {
+                font-size: 11px;
+            }
+
+            .badge-item i {
+                font-size: 12px;
+            }
+        }
     </style>
 
     <!-- ==========================================
          PART 2: BRAND BADGES (Paste below slider)
          ========================================== -->
     <section class="brand-badges-strip">
-  <div class="marquee-track">
-    <!-- Original Items -->
-    <div class="badge-item">
-      <i class="fas fa-crown"></i>
-      <span>Premium Quality</span>
-    </div>
-    <div class="badge-item">
-      <i class="fas fa-leaf"></i>
-      <span>100% Vegan Ingredients</span>
-    </div>
-    <div class="badge-item">
-      <i class="fas fa-clock"></i>
-      <span>Long Lasting Scent</span>
-    </div>
-    <div class="badge-item">
-      <i class="fas fa-truck"></i>
-      <span>Fast & Secure Delivery</span>
-    </div>
+        <div class="marquee-track">
+            <!-- Original Items -->
+            <div class="badge-item">
+                <i class="fas fa-crown"></i>
+                <span>Premium Quality</span>
+            </div>
+            <div class="badge-item">
+                <i class="fas fa-leaf"></i>
+                <span>100% Vegan Ingredients</span>
+            </div>
+            <div class="badge-item">
+                <i class="fas fa-clock"></i>
+                <span>Long Lasting Scent</span>
+            </div>
+            <div class="badge-item">
+                <i class="fas fa-truck"></i>
+                <span>Fast & Secure Delivery</span>
+            </div>
 
-    <!-- Duplicate Items (For Infinite Seamless Loop) -->
-    <div class="badge-item">
-      <i class="fas fa-crown"></i>
-      <span>Premium Quality</span>
-    </div>
-    <div class="badge-item">
-      <i class="fas fa-leaf"></i>
-      <span>100% Vegan Ingredients</span>
-    </div>
-    <div class="badge-item">
-      <i class="fas fa-clock"></i>
-      <span>Long Lasting Scent</span>
-    </div>
-    <div class="badge-item">
-      <i class="fas fa-truck"></i>
-      <span>Fast & Secure Delivery</span>
-    </div>
-  </div>
-</section>
+            <!-- Duplicate Items (For Infinite Seamless Loop) -->
+            <div class="badge-item">
+                <i class="fas fa-crown"></i>
+                <span>Premium Quality</span>
+            </div>
+            <div class="badge-item">
+                <i class="fas fa-leaf"></i>
+                <span>100% Vegan Ingredients</span>
+            </div>
+            <div class="badge-item">
+                <i class="fas fa-clock"></i>
+                <span>Long Lasting Scent</span>
+            </div>
+            <div class="badge-item">
+                <i class="fas fa-truck"></i>
+                <span>Fast & Secure Delivery</span>
+            </div>
+        </div>
+    </section>
 
     <!-- ==========================================
          PART 2: SHOP BY CATEGORY
@@ -703,7 +765,7 @@
         <p class="section-subtitle">Discover our signature collections tailored for you</p>
 
         <div class="category-grid">
-            
+
             <!-- Category 1 -->
             <div class="category-card">
                 <img src="media/category1.webp" alt="Men's Fragrance">
@@ -743,8 +805,16 @@
         </div>
     </section>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; background-color: #ffffff; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+        }
 
         /* =========================================
            PART 3: FEATURED PRODUCTS SECTION
@@ -795,13 +865,14 @@
 
         .product-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
         }
 
         .product-img-box {
             position: relative;
             width: 100%;
-            aspect-ratio: 4 / 5; /* Perfume bottles ke liye perfect portrait size */
+            aspect-ratio: 4 / 5;
+            /* Perfume bottles ke liye perfect portrait size */
             background-color: #f9f9f9;
             overflow: hidden;
             border-radius: 8px;
@@ -831,7 +902,8 @@
         .product-info .price {
             font-size: 15px;
             font-weight: 500;
-            color: #c09b3d; /* Golden color */
+            color: #c09b3d;
+            /* Golden color */
             margin-bottom: 15px;
         }
 
@@ -884,10 +956,11 @@
            ========================================= */
         @media (max-width: 900px) {
             .products-grid {
-                grid-template-columns: repeat(2, 1fr); /* Mobile par 2 columns per row */
+                grid-template-columns: repeat(2, 1fr);
+                /* Mobile par 2 columns per row */
                 gap: 15px;
             }
-            
+
             .section-header h2 {
                 font-size: 26px;
             }
@@ -906,122 +979,123 @@
                 width: 90%;
             }
         }
+
         * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-.hero-banner {
-  position: relative;
-  width: 100%;
-  min-height: 450px;
-  /* Apni image ka path yahan lagayein */
-  background-image: url('media/trust.webp'); 
-  background-size: cover;
-  background-position: center right;
-  display: flex;
-  align-items: center;
-}
+        .hero-banner {
+            position: relative;
+            width: 100%;
+            min-height: 450px;
+            /* Apni image ka path yahan lagayein */
+            background-image: url('media/trust.webp');
+            background-size: cover;
+            background-position: center right;
+            display: flex;
+            align-items: center;
+        }
 
-.banner-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  /* Gradient text ko clear dikhane ke liye */
-  background: linear-gradient(90deg, rgba(0, 80, 130, 0.6) 0%, rgba(0, 0, 0, 0.1) 100%);
-  z-index: 1;
-}
+        .banner-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            /* Gradient text ko clear dikhane ke liye */
+            background: linear-gradient(90deg, rgba(0, 80, 130, 0.6) 0%, rgba(0, 0, 0, 0.1) 100%);
+            z-index: 1;
+        }
 
-.banner-container {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+        .banner-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-.banner-content {
-  max-width: 500px;
-  color: #ffffff;
-}
+        .banner-content {
+            max-width: 500px;
+            color: #ffffff;
+        }
 
-.sub-heading {
-  font-size: 16px;
-  font-weight: 500;
-  margin-bottom: 12px;
-  opacity: 0.9;
-}
+        .sub-heading {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 12px;
+            opacity: 0.9;
+        }
 
-.main-heading {
-  font-size: 42px;
-  font-weight: 700;
-  line-height: 1.2;
-  margin-bottom: 16px;
-}
+        .main-heading {
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
 
-.description {
-  font-size: 14px;
-  line-height: 1.6;
-  margin-bottom: 25px;
-  opacity: 0.95;
-}
+        .description {
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
 
-.shop-btn {
-  display: inline-block;
-  background-color: #ffffff;
-  color: #1a1a1a;
-  padding: 12px 28px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 15px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+        .shop-btn {
+            display: inline-block;
+            background-color: #ffffff;
+            color: #1a1a1a;
+            padding: 12px 28px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-.shop-btn:hover {
-  background-color: #f0f0f0;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-}
+        .shop-btn:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
 
-/* Responsive design for mobile screens */
-@media (max-width: 768px) {
-  .hero-banner {
-    background-position: center;
-    text-align: center;
-    padding: 50px 0;
-  }
-  
-  .banner-content {
-    margin: 0 auto;
-  }
+        /* Responsive design for mobile screens */
+        @media (max-width: 768px) {
+            .hero-banner {
+                background-position: center;
+                text-align: center;
+                padding: 50px 0;
+            }
 
-  .main-heading {
-    font-size: 30px;
-  }
-}
+            .banner-content {
+                margin: 0 auto;
+            }
+
+            .main-heading {
+                font-size: 30px;
+            }
+        }
     </style>
     <section class="hero-banner">
-  <div class="banner-overlay"></div>
-  <div class="banner-container">
-    <div class="banner-content">
-      <p class="sub-heading">Real experiences. Real results.</p>
-      <h1 class="main-heading">Trusted by 50,000+ <br>Happy Customer</h1>
-      <p class="description">
-        Join thousands of satisfied customers who rely on our quality, 
-        service, and consistency. With over 50,000 verified reviews, 
-        our community continues to grow every day.
-      </p>
-      <a href="#" class="shop-btn">Shop Now <i class="fas fa-shopping-cart"></i></a>
-    </div>
-  </div>
-</section>
+        <div class="banner-overlay"></div>
+        <div class="banner-container">
+            <div class="banner-content">
+                <p class="sub-heading">Real experiences. Real results.</p>
+                <h1 class="main-heading">Trusted by 50,000+ <br>Happy Customer</h1>
+                <p class="description">
+                    Join thousands of satisfied customers who rely on our quality,
+                    service, and consistency. With over 50,000 verified reviews,
+                    our community continues to grow every day.
+                </p>
+                <a href="#" class="shop-btn">Shop Now <i class="fas fa-shopping-cart"></i></a>
+            </div>
+        </div>
+    </section>
 
     <section class="featured-section">
         <div class="section-header">
@@ -1030,7 +1104,7 @@
         </div>
 
         <div class="products-grid">
-            
+
             <!-- Product 1 -->
             <div class="product-card">
                 <div class="product-img-box">
@@ -1143,15 +1217,23 @@
             cartCount++;
             // Assuming you have an element with class 'cart-badge' in your header
             const badge = document.querySelector('.cart-badge');
-            if(badge) {
+            if (badge) {
                 badge.textContent = cartCount;
             }
             alert("Item added to cart successfully!");
         }
     </script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
 
         /* =========================================
            PART 4: BRAND STORY SECTION
@@ -1159,7 +1241,8 @@
         .brand-story {
             display: flex;
             align-items: center;
-            background-color: #111111; /* Dark theme for luxury contrast */
+            background-color: #111111;
+            /* Dark theme for luxury contrast */
             color: #ffffff;
         }
 
@@ -1180,7 +1263,8 @@
         }
 
         .story-content h4 {
-            color: #c09b3d; /* Golden accent */
+            color: #c09b3d;
+            /* Golden accent */
             font-size: 14px;
             text-transform: uppercase;
             letter-spacing: 3px;
@@ -1225,7 +1309,8 @@
            PART 4: TESTIMONIALS / REVIEWS
            ========================================= */
         .testimonials-section {
-            background-color: #f9f9f9; /* Soft off-white to contrast with the dark story */
+            background-color: #f9f9f9;
+            /* Soft off-white to contrast with the dark story */
             padding: 80px 5%;
             text-align: center;
         }
@@ -1251,7 +1336,7 @@
             background-color: #ffffff;
             padding: 40px 30px;
             border-radius: 8px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease;
         }
 
@@ -1288,7 +1373,7 @@
             .brand-story {
                 flex-direction: column;
             }
-            
+
             .story-image {
                 width: 100%;
                 height: 400px;
@@ -1317,7 +1402,9 @@
         <div class="story-content">
             <h4>Heritage & Craftsmanship</h4>
             <h2>The Art Of True Perfumery</h2>
-            <p>Every bottle of True Fragrance is a masterpiece crafted with precision and passion. We source the rarest and finest ingredients from around the world to create scents that leave a lasting impression. Experience luxury that speaks for itself, designed for those who lead the trend.</p>
+            <p>Every bottle of True Fragrance is a masterpiece crafted with precision and passion. We source the rarest
+                and finest ingredients from around the world to create scents that leave a lasting impression.
+                Experience luxury that speaks for itself, designed for those who lead the trend.</p>
             <a href="#" class="btn-outline-gold">Discover Our Journey</a>
         </div>
     </section>
@@ -1330,46 +1417,61 @@
             <h2>What Our Clients Say</h2>
         </div>
         <div class="reviews-grid">
-            
+
             <!-- Review 1 -->
             <div class="review-card">
                 <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <p class="review-text">"The Golden Amber is absolutely divine. It lasts all day and I constantly get compliments. Truly a premium experience from packaging to the scent."</p>
+                <p class="review-text">"The Golden Amber is absolutely divine. It lasts all day and I constantly get
+                    compliments. Truly a premium experience from packaging to the scent."</p>
                 <h4 class="reviewer-name">- Sarah Ahmed</h4>
             </div>
 
             <!-- Review 2 -->
             <div class="review-card">
                 <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star"></i>
                 </div>
-                <p class="review-text">"I was skeptical at first, but Midnight Oud blew me away. It has that rich, expensive feel that you usually only get from high-end designer brands."</p>
+                <p class="review-text">"I was skeptical at first, but Midnight Oud blew me away. It has that rich,
+                    expensive feel that you usually only get from high-end designer brands."</p>
                 <h4 class="reviewer-name">- Bilal Khan</h4>
             </div>
 
             <!-- Review 3 -->
             <div class="review-card">
                 <div class="stars">
-                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
                 </div>
-                <p class="review-text">"Fast delivery and incredible presentation. The Velvet Rose is now my signature scent. Highly recommend True Fragrance to anyone looking for quality."</p>
+                <p class="review-text">"Fast delivery and incredible presentation. The Velvet Rose is now my signature
+                    scent. Highly recommend True Fragrance to anyone looking for quality."</p>
                 <h4 class="reviewer-name">- Ayesha Tariq</h4>
             </div>
 
         </div>
     </section>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
 
         /* =========================================
            PART 5: FAQs SECTION
            ========================================= */
         .faq-section {
             padding: 80px 5%;
-            background-color: #ffffff; /* Clean white background */
+            background-color: #ffffff;
+            /* Clean white background */
             max-width: 900px;
             margin: 0 auto;
         }
@@ -1411,7 +1513,8 @@
         }
 
         .faq-question:hover {
-            color: #c09b3d; /* Golden hover */
+            color: #c09b3d;
+            /* Golden hover */
         }
 
         .faq-question i {
@@ -1435,17 +1538,21 @@
 
         /* Active State */
         .faq-item.active .faq-question i {
-            transform: rotate(45deg); /* Plus icon turns into a cross */
+            transform: rotate(45deg);
+            /* Plus icon turns into a cross */
         }
+
         .faq-item.active .faq-answer {
-            max-height: 200px; /* Adjust according to text length */
+            max-height: 200px;
+            /* Adjust according to text length */
         }
 
         /* =========================================
            PART 5: INSTAGRAM FEED SECTION
            ========================================= */
         .instagram-section {
-            background-color: #111111; /* Dark theme to transition into footer */
+            background-color: #111111;
+            /* Dark theme to transition into footer */
             padding: 80px 0 0 0;
             text-align: center;
         }
@@ -1482,7 +1589,8 @@
 
         .ig-post {
             position: relative;
-            aspect-ratio: 1 / 1; /* Perfect squares */
+            aspect-ratio: 1 / 1;
+            /* Perfect squares */
             overflow: hidden;
             cursor: pointer;
         }
@@ -1519,9 +1627,11 @@
         .ig-post:hover img {
             transform: scale(1.1);
         }
+
         .ig-post:hover .ig-overlay {
             opacity: 1;
         }
+
         .ig-post:hover .ig-overlay i {
             transform: translateY(0);
         }
@@ -1533,11 +1643,14 @@
             .faq-section {
                 padding: 60px 5%;
             }
+
             .faq-question {
                 font-size: 15px;
             }
+
             .ig-grid {
-                grid-template-columns: repeat(2, 1fr); /* Mobile par 2 columns */
+                grid-template-columns: repeat(2, 1fr);
+                /* Mobile par 2 columns */
             }
         }
     </style>
@@ -1546,7 +1659,7 @@
          PART 5: FAQs SECTION
   
          ========================================== -->
-   <section class="instagram-section">
+    <section class="instagram-section">
         <div class="instagram-header">
             <h2>Join Our Community</h2>
             <p>Follow us on Instagram <span>@TrueFragrance</span></p>
@@ -1575,8 +1688,8 @@
             </div>
         </div>
     </section>
- 
-         <section class="faq-section">
+
+    <section class="faq-section">
         <div class="faq-header">
             <h2>Frequently Asked Questions</h2>
             <p>Everything you need to know about our luxury fragrances</p>
@@ -1589,7 +1702,8 @@
                     <i class="fas fa-plus"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>Yes, all True Fragrance perfumes are formulated with high-grade oils (Parfum concentration), ensuring they last 12-24 hours on skin and even longer on fabric.</p>
+                    <p>Yes, all True Fragrance perfumes are formulated with high-grade oils (Parfum concentration),
+                        ensuring they last 12-24 hours on skin and even longer on fabric.</p>
                 </div>
             </div>
 
@@ -1599,7 +1713,8 @@
                     <i class="fas fa-plus"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>Absolutely. We are committed to ethical sourcing. Our fragrances are 100% vegan, cruelty-free, and crafted using high-quality plant-based ethanol.</p>
+                    <p>Absolutely. We are committed to ethical sourcing. Our fragrances are 100% vegan, cruelty-free,
+                        and crafted using high-quality plant-based ethanol.</p>
                 </div>
             </div>
 
@@ -1609,7 +1724,8 @@
                     <i class="fas fa-plus"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>Standard delivery across Pakistan takes 3-5 business days. We offer free delivery on all orders above Rs. 5,000.</p>
+                    <p>Standard delivery across Pakistan takes 3-5 business days. We offer free delivery on all orders
+                        above Rs. 5,000.</p>
                 </div>
             </div>
 
@@ -1619,7 +1735,8 @@
                     <i class="fas fa-plus"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>We accept returns within 7 days of delivery, provided the perfume is unused, sealed, and in its original premium packaging.</p>
+                    <p>We accept returns within 7 days of delivery, provided the perfume is unused, sealed, and in its
+                        original premium packaging.</p>
                 </div>
             </div>
         </div>
@@ -1628,7 +1745,7 @@
     <!-- ==========================================
          PART 5: INSTAGRAM FEED SECTION
          ========================================== -->
-  
+
 
     <!-- ==========================================
          JAVASCRIPT FOR FAQs
@@ -1636,7 +1753,7 @@
     <script>
         function toggleFaq(element) {
             const faqItem = element.parentElement;
-            
+
             // Close all other open FAQs (Optional: if you only want one open at a time)
             const allItems = document.querySelectorAll('.faq-item');
             allItems.forEach(item => {
@@ -1650,14 +1767,23 @@
         }
     </script>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
 
         /* =========================================
            PART 6: CONTACT US SECTION (White BG)
            ========================================= */
         .contact-section {
-            background-color: #ffffff; /* White Background */
+            background-color: #ffffff;
+            /* White Background */
             padding: 80px 5% 40px;
             max-width: 1200px;
             margin: 0 auto;
@@ -1705,7 +1831,8 @@
 
         .info-item i {
             font-size: 20px;
-            color: #c09b3d; /* Golden accent */
+            color: #c09b3d;
+            /* Golden accent */
             margin-top: 5px;
         }
 
@@ -1730,7 +1857,7 @@
             margin-bottom: 20px;
         }
 
-        .form-group input, 
+        .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 15px;
@@ -1744,7 +1871,7 @@
             transition: border-color 0.3s ease;
         }
 
-        .form-group input:focus, 
+        .form-group input:focus,
         .form-group textarea:focus {
             border-color: #c09b3d;
         }
@@ -1776,7 +1903,8 @@
            PART 6: NEWSLETTER SECTION (White BG)
            ========================================= */
         .newsletter-section {
-            background-color: #ffffff; /* White Background */
+            background-color: #ffffff;
+            /* White Background */
             padding: 40px 5% 80px;
             text-align: center;
         }
@@ -1784,7 +1912,8 @@
         .newsletter-content {
             max-width: 600px;
             margin: 0 auto;
-            background-color: #f9f9f9; /* Subtle off-white box for contrast */
+            background-color: #f9f9f9;
+            /* Subtle off-white box for contrast */
             padding: 50px 30px;
             border-radius: 8px;
             border: 1px solid #eeeeee;
@@ -1953,7 +2082,8 @@
             .newsletter-form {
                 flex-direction: column;
             }
-            .newsletter-form input, 
+
+            .newsletter-form input,
             .newsletter-form button {
                 width: 100%;
             }
@@ -1969,6 +2099,199 @@
                 text-align: center;
             }
         }
+        /* Overlay for Background Blur/Darken */
+.ui-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1050;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+.ui-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Base Slider Styles */
+.sliding-menu, .sliding-cart {
+    position: fixed;
+    top: 0;
+    width: 320px;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 1100;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+/* Sliding Menu (Left to Right) */
+.sliding-menu {
+    left: 0;
+    transform: translateX(-100%);
+}
+.sliding-menu.active {
+    transform: translateX(0);
+}
+
+/* Sliding Cart (Right to Left) */
+.sliding-cart {
+    right: 0;
+    transform: translateX(100%);
+}
+.sliding-cart.active {
+    transform: translateX(0);
+}
+
+/* Responsive Cart for Mobile */
+@media (max-width: 400px) {
+    .sliding-menu, .sliding-cart {
+        width: 100%;
+    }
+}
+
+/* Header inside sliders */
+.slider-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #111111;
+    color: #c09b3d; /* Golden accent */
+    border-bottom: 2px solid #c09b3d;
+}
+.slider-header h3 {
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.close-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+.close-btn:hover {
+    color: #c09b3d;
+}
+
+/* Mobile Nav Links */
+.mobile-nav-links {
+    list-style: none;
+    padding: 20px 0;
+    overflow-y: auto;
+}
+.mobile-nav-links li a {
+    display: block;
+    padding: 15px 25px;
+    color: #111111;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid #eeeeee;
+    transition: background 0.3s, color 0.3s;
+}
+.mobile-nav-links li a:hover {
+    background-color: #f9f9f9;
+    color: #c09b3d;
+}
+
+/* Cart Specific Styles */
+.cart-items {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+.empty-cart-msg {
+    text-align: center;
+    color: #666666;
+    margin-top: 50px;
+    font-size: 15px;
+}
+.cart-footer {
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eeeeee;
+}
+.subtotal {
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    font-weight: 600;
+    color: #111111;
+    margin-bottom: 15px;
+}
+.checkout-btn {
+    width: 100%;
+    background-color: #c09b3d;
+    color: #ffffff;
+    border: none;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.checkout-btn:hover {
+    background-color: #111111;
+}
+
+/* Top Search Bar Overlay */
+.search-bar-container {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    z-index: 1100;
+    padding: 30px 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: top 0.4s ease;
+}
+.search-bar-container.active {
+    top: 0;
+}
+.search-box {
+    display: flex;
+    width: 100%;
+    max-width: 800px;
+    border-bottom: 2px solid #111111;
+    padding-bottom: 5px;
+    margin-right: 20px;
+}
+.search-box input {
+    flex: 1;
+    border: none;
+    outline: none;
+    font-size: 20px;
+    padding: 10px;
+}
+.search-submit {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: #111111;
+    cursor: pointer;
+}
+.search-bar-container .close-btn {
+    color: #111111;
+    font-size: 28px;
+}
+.search-bar-container .close-btn:hover {
+    color: #c09b3d;
+}
     </style>
 
 
@@ -2051,7 +2374,8 @@
             <div class="footer-brand">
                 <!-- Insert Logo Image URL here -->
                 <img src="media/logo_1.webp" alt="True Fragrance">
-                <p>Crafting memories through scent. True Fragrance brings you the finest selection of premium perfumes and attars globally sourced for absolute perfection.</p>
+                <p>Crafting memories through scent. True Fragrance brings you the finest selection of premium perfumes
+                    and attars globally sourced for absolute perfection.</p>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -2104,5 +2428,88 @@
             </div>
         </div>
     </footer>
+    <!-- Background Overlay -->
+<div class="ui-overlay" onclick="closeAllUI()"></div>
+
+<!-- Top Search Bar -->
+<div class="search-bar-container" id="searchBar">
+    <div class="search-box">
+        <input type="text" placeholder="Search for fragrances, candles...">
+        <button class="search-submit"><i class="fas fa-search"></i></button>
+    </div>
+    <button class="close-btn" onclick="closeAllUI()"><i class="fas fa-times"></i></button>
+</div>
+
+<!-- Sliding Mobile Menu -->
+<div class="sliding-menu" id="slidingMenu">
+    <div class="slider-header">
+        <h3>Menu</h3>
+        <button class="close-btn" onclick="closeAllUI()"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="mobile-nav-links">
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Bundles</a></li>
+        <li><a href="#">Classifications</a></li>
+        <li><a href="#">Inspired by Brands</a></li>
+        <li><a href="#">Candles</a></li>
+        <li><a href="#">Attar Collection</a></li>
+        <li><a href="#">Login / Register</a></li>
+    </ul>
+</div>
+
+<!-- Sliding Cart -->
+<div class="sliding-cart" id="slidingCart">
+    <div class="slider-header">
+        <h3>Your Cart</h3>
+        <button class="close-btn" onclick="closeAllUI()"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items">
+        <p class="empty-cart-msg">Your cart is currently empty.</p>
+        <!-- Yahan cart items dynamically add honge -->
+    </div>
+    <div class="cart-footer">
+        <div class="subtotal">
+            <span>Subtotal:</span>
+            <span>Rs. 0</span>
+        </div>
+        <button class="checkout-btn">Proceed to Checkout</button>
+    </div>
+</div>
+<script>
+    // Elements select kar rahe hain
+const overlay = document.querySelector('.ui-overlay');
+const menu = document.getElementById('slidingMenu');
+const cart = document.getElementById('slidingCart');
+const search = document.getElementById('searchBar');
+
+// Menu open karne ka function
+function openMenu() {
+    overlay.classList.add('active');
+    menu.classList.add('active');
+}
+
+// Cart open karne ka function
+function openCart(e) {
+    if(e) e.preventDefault(); // href="#" ko default top pe jump karne se rokne ke liye
+    overlay.classList.add('active');
+    cart.classList.add('active');
+}
+
+// Search open karne ka function
+function openSearch(e) {
+    if(e) e.preventDefault();
+    overlay.classList.add('active');
+    search.classList.add('active');
+}
+
+// Sab UI elements close karne ka function (Overlay pe ya Cross button pe click hone par)
+function closeAllUI() {
+    overlay.classList.remove('active');
+    menu.classList.remove('active');
+    cart.classList.remove('active');
+    search.classList.remove('active');
+}
+</script>
 </body>
+
 </html>
