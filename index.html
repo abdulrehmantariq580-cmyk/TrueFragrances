@@ -1,0 +1,2108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True Fragrance</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #ffffff; 
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Golden Announcement Bar */
+        .top-bar {
+            background-color: #c09b3d;
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 15px;
+            font-size: 13.5px;
+            font-weight: 500;
+        }
+
+        /* Black Header */
+        header {
+            background-color: #111111;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 4%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo Area */
+        .logo-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .logo-container img {
+            height: 40px; 
+            width: auto;
+            object-fit: contain;
+        }
+
+        /* Center Navigation */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+            flex: 2;
+            justify-content: center;
+        }
+
+        .nav-menu li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: opacity 0.3s;
+        }
+
+        .nav-menu li a i {
+            font-size: 11px;
+        }
+
+        .nav-menu li a:hover {
+            opacity: 0.7;
+        }
+
+        /* Right Icons */
+        .header-icons {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            flex: 1;
+            justify-content: flex-end;
+        }
+
+        .header-icons a {
+            color: #ffffff;
+            font-size: 18px;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -6px;
+            right: -8px;
+            background-color: #ffffff;
+            color: #111111;
+            font-size: 10px;
+            font-weight: 700;
+            height: 16px;
+            width: 16px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Hero Banner Slider - 16:9 Ratio */
+        .hero-slider {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            max-height: 800px;
+            background-color: #111111; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+        }
+
+        /* Animated Navigation Dots */
+        .slider-dots {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot:hover {
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .dot.active {
+            background-color: #c09b3d; /* Matches the golden top bar */
+            width: 30px; /* Expands to a pill shape for animation */
+            border-radius: 10px;
+        }
+
+        /* Floating WhatsApp Icon */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: #ffffff;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive - Mobile View */
+        .mobile-menu-btn {
+            display: none;
+            color: #ffffff;
+            font-size: 22px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex: 1;
+            text-align: left;
+        }
+
+        @media (max-width: 990px) {
+            .nav-menu { display: none; }
+            .mobile-menu-btn { display: block; }
+            header { padding: 15px 5%; }
+            .header-icons .user-icon { display: none; }
+            
+            .hero-slider { 
+                height: auto; 
+                aspect-ratio: 16 / 9; 
+            }
+            .slider-dots {
+                bottom: 10px;
+            }
+            .dot {
+                width: 8px;
+                height: 8px;
+            }
+            .dot.active {
+                width: 20px;
+            }
+        }
+        /* Option 2 CSS */
+.elegant-divider {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, #111111, #c09b3d, #111111);
+    box-shadow: 0 2px 15px rgba(192, 155, 61, 0.4); /* Golden glow */
+    position: relative;
+    z-index: 10;
+}
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        Free Delivery on Orders Above Rs. 5,000
+    </div>
+
+    <header>
+        <button class="mobile-menu-btn">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <div class="logo-container">
+            <!-- Logo src yahan dalna hai -->
+            <img src="media/logo_1.webp" alt="True Fragrance">
+        </div>
+
+        <ul class="nav-menu">
+            <li><a href="#">Shop <i class="fas fa-angle-down"></i></a></li>
+            <li><a href="#">Bundles</a></li>
+            <li><a href="#">Classifications <i class="fas fa-angle-down"></i></a></li>
+            <li><a href="#">Inspired by Brands <i class="fas fa-angle-down"></i></a></li>
+            <li><a href="#">Candles</a></li>
+            <li><a href="#">Attar Collection</a></li>
+        </ul>
+
+        <div class="header-icons">
+            <a href="#"><i class="fas fa-search"></i></a>
+            <a href="#" class="user-icon"><i class="far fa-user"></i></a>
+            <a href="#">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-badge">0</span>
+            </a>
+        </div>
+    </header>
+
+    <section class="hero-slider">
+        <!-- Slide 1 -->
+        <div class="slide active">
+            <!-- First banner image URL -->
+            <img src="media/banner2.webp" alt="Banner 1">
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide">
+            <!-- Second banner image URL -->
+            <img src="media/banner3.webp" alt="Banner 2">
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+            <!-- Third banner image URL -->
+            <img src="media/banner.webp" alt="Banner 3">
+        </div>
+
+        <!-- Animated Dots Container -->
+        <div class="slider-dots">
+            <div class="dot active" onclick="goToSlide(0)"></div>
+            <div class="dot" onclick="goToSlide(1)"></div>
+            <div class="dot" onclick="goToSlide(2)"></div>
+        </div>
+    </section>
+    <!-- Option 2: Golden Divider -->
+<div class="elegant-divider"></div>
+    <a href="#" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Slider Script with Dots Logic -->
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let slideInterval;
+
+        function goToSlide(index) {
+            // Remove active classes
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            // Set new index
+            currentSlide = index;
+            
+            // Add active classes
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+            
+            // Reset interval when manually clicked
+            resetInterval();
+        }
+
+        function nextSlide() {
+            let nextIndex = (currentSlide + 1) % slides.length;
+            goToSlide(nextIndex);
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 4000); // Auto-slide every 4 seconds
+        }
+
+        // Start auto-slider
+        resetInterval();
+    </script>
+    
+    
+    
+    <style>
+        /* Base styles (Agar aap alag se test kar rahe hain) */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #ffffff; font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        /* =========================================
+           PART 2: BRAND BADGES SECTION
+           ========================================= */
+        .brand-badges {
+            background-color: #111111; /* Dark background to match header/hero */
+            padding: 30px 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            border-bottom: 1px solid rgba(192, 155, 61, 0.2); /* Subtle gold line */
+        }
+
+        .badge-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ffffff;
+            transition: transform 0.3s ease;
+        }
+
+        .badge-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .badge-item i {
+            font-size: 24px;
+            color: #c09b3d; /* Golden accent */
+        }
+
+        .badge-item span {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        /* =========================================
+           PART 2: CATEGORIES SECTION
+           ========================================= */
+        .categories-section {
+            padding: 70px 5%;
+            background-color: #ffffff; /* White background jaisa aapne pehle manga tha */
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111111;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-subtitle {
+            font-size: 15px;
+            color: #666666;
+            margin-bottom: 50px;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .category-card {
+            position: relative;
+            height: 350px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Category Images (Blank src for you) */
+        .category-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        /* Dark overlay for text readability */
+        .category-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(17,17,17,0.1), rgba(17,17,17,0.8));
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 30px 20px;
+            transition: background 0.3s ease;
+        }
+
+        .category-overlay h3 {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+
+        .category-overlay .explore-btn {
+            color: #c09b3d; /* Gold */
+            font-size: 13px;
+            font-weight: 500;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateY(15px);
+            transition: all 0.4s ease;
+        }
+
+        /* Hover Effects */
+        .category-card:hover img {
+            transform: scale(1.08); /* Slight zoom */
+        }
+
+        .category-card:hover .category-overlay {
+            background: linear-gradient(to bottom, rgba(17,17,17,0.3), rgba(17,17,17,0.9));
+        }
+
+        .category-card:hover h3 {
+            color: #c09b3d; /* Text turns gold */
+        }
+
+        .category-card:hover .explore-btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .brand-badges {
+                gap: 20px;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 30px 10%;
+            }
+            .category-card {
+                height: 280px;
+            }
+        }
+        @media (max-width: 768px) {
+    /* Badges section ke liye list layout */
+    .brand-badges {
+        gap: 15px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 20px 5%; /* Padding thori kam ki hai */
+    }
+
+    /* Categories section ko 2 columns ki grid banaya */
+    .category-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns for mobile */
+        gap: 15px; /* Cards ke darmiyan spacing thori kam ki hai */
+    }
+
+    /* Cards ki height mobile par thori choti ki hai taake proportionate lagen */
+    .category-card {
+        height: 200px; /* Mobile par thori kam height behtar lagegi */
+    }
+
+    /* Text thora chota kiya taake 2 columns mein fit aaye */
+    .category-overlay h3 {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .category-overlay .explore-btn {
+        font-size: 11px;
+    }
+}
+@media (max-width: 768px) {
+    /* Badges ko 2x2 Grid mein convert kiya */
+    .brand-badges {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        gap: 20px 15px; /* Top/Bottom gap 20px, Left/Right gap 15px */
+        padding: 25px 5%;
+        justify-items: center; /* Items ko horizontally center karega */
+        align-items: start; /* Items ko vertically top par align karega */
+    }
+
+    /* Icon upar aur text neeche karne ke liye flex-direction column */
+    .badge-item {
+        flex-direction: column; 
+        text-align: center;
+        gap: 8px; /* Icon aur text ke darmiyan space */
+    }
+
+    /* Mobile ke liye icon thora resize kiya */
+    .badge-item i {
+        font-size: 22px; 
+    }
+
+    /* Text chota aur multi-line adjust kiya */
+    .badge-item span {
+        font-size: 11px; 
+        line-height: 1.4;
+        max-width: 100px; /* Text ko center mein rakhne ke liye constraint */
+    }
+}
+/* Thin Golden Strip Container */
+.brand-badges-strip {
+  width: 100%;
+  overflow: hidden;
+  /* Premium Metallic Gold Gradient Background */
+  background: linear-gradient(90deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+  color: #000000; /* Black text */
+  padding: 8px 0; /* Thin height */
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Moving Track */
+.marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 4rem; /* Items ke beech clean space */
+  width: max-content;
+  animation: scroll-left 22s linear infinite;
+}
+
+/* Pause animation on hover */
+.brand-badges-strip:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+/* Badge Item Styling - Pure Icons & Text in 1 Line */
+.badge-item {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row; /* Horizontal alignment Ensure karne ke liye */
+  gap: 8px; /* Icon aur Text ke beech space */
+  font-size: 13px; /* Sleek & Thin look */
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #000000; /* Pure Black Text */
+}
+
+/* Icon styling */
+.badge-item i {
+  color: #000000; /* Pure Black Icon */
+  font-size: 14px; /* Icon size text ke sath perfectly match karega */
+}
+
+/* Smooth Infinite Loop */
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile Friendly Adjustment */
+@media (max-width: 768px) {
+  .brand-badges-strip {
+    padding: 6px 0; /* Aur bhi sleek mobile ke liye */
+  }
+
+  .marquee-track {
+    gap: 2.5rem;
+    animation-duration: 16s;
+  }
+  
+  .badge-item {
+    font-size: 11px;
+  }
+  
+  .badge-item i {
+    font-size: 12px;
+  }
+}
+
+    </style>
+
+    <!-- ==========================================
+         PART 2: BRAND BADGES (Paste below slider)
+         ========================================== -->
+    <section class="brand-badges-strip">
+  <div class="marquee-track">
+    <!-- Original Items -->
+    <div class="badge-item">
+      <i class="fas fa-crown"></i>
+      <span>Premium Quality</span>
+    </div>
+    <div class="badge-item">
+      <i class="fas fa-leaf"></i>
+      <span>100% Vegan Ingredients</span>
+    </div>
+    <div class="badge-item">
+      <i class="fas fa-clock"></i>
+      <span>Long Lasting Scent</span>
+    </div>
+    <div class="badge-item">
+      <i class="fas fa-truck"></i>
+      <span>Fast & Secure Delivery</span>
+    </div>
+
+    <!-- Duplicate Items (For Infinite Seamless Loop) -->
+    <div class="badge-item">
+      <i class="fas fa-crown"></i>
+      <span>Premium Quality</span>
+    </div>
+    <div class="badge-item">
+      <i class="fas fa-leaf"></i>
+      <span>100% Vegan Ingredients</span>
+    </div>
+    <div class="badge-item">
+      <i class="fas fa-clock"></i>
+      <span>Long Lasting Scent</span>
+    </div>
+    <div class="badge-item">
+      <i class="fas fa-truck"></i>
+      <span>Fast & Secure Delivery</span>
+    </div>
+  </div>
+</section>
+
+    <!-- ==========================================
+         PART 2: SHOP BY CATEGORY
+         ========================================== -->
+    <section class="categories-section">
+        <h2 class="section-title">Shop By Category</h2>
+        <p class="section-subtitle">Discover our signature collections tailored for you</p>
+
+        <div class="category-grid">
+            
+            <!-- Category 1 -->
+            <div class="category-card">
+                <img src="media/category1.webp" alt="Men's Fragrance">
+                <div class="category-overlay">
+                    <h3>For Him</h3>
+                    <a href="#" class="explore-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Category 2 -->
+            <div class="category-card">
+                <img src="media/category2.webp" alt="Women's Fragrance">
+                <div class="category-overlay">
+                    <h3>For Her</h3>
+                    <a href="#" class="explore-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Category 3 -->
+            <div class="category-card">
+                <img src="media/category3.webp" alt="Unisex Fragrance">
+                <div class="category-overlay">
+                    <h3>Unisex</h3>
+                    <a href="#" class="explore-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <!-- Category 4 -->
+            <div class="category-card">
+                <img src="media/category4.webp" alt="Luxury Candles">
+                <div class="category-overlay">
+                    <h3>Candles</h3>
+                    <a href="#" class="explore-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background-color: #ffffff; }
+
+        /* =========================================
+           PART 3: FEATURED PRODUCTS SECTION
+           ========================================= */
+        .featured-section {
+            padding: 70px 5%;
+            background-color: #ffffff;
+            text-align: center;
+        }
+
+        .section-header {
+            margin-bottom: 40px;
+        }
+
+        .section-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111111;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            font-size: 15px;
+            color: #666666;
+        }
+
+        /* Grid Layout: PC par 4 columns */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        /* Product Card Styling */
+        .product-card {
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .product-img-box {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 4 / 5; /* Perfume bottles ke liye perfect portrait size */
+            background-color: #f9f9f9;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .product-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-img-box img {
+            transform: scale(1.08);
+        }
+
+        /* Card Details */
+        .product-info h4 {
+            font-size: 16px;
+            font-weight: 600;
+            color: #111111;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .product-info .price {
+            font-size: 15px;
+            font-weight: 500;
+            color: #c09b3d; /* Golden color */
+            margin-bottom: 15px;
+        }
+
+        /* Add to Cart Button */
+        .add-cart-btn {
+            background-color: transparent;
+            color: #111111;
+            border: 1px solid #111111;
+            padding: 10px 25px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 80%;
+            border-radius: 4px;
+        }
+
+        .add-cart-btn:hover {
+            background-color: #111111;
+            color: #ffffff;
+            border-color: #111111;
+        }
+
+        /* View All Button */
+        .view-all-container {
+            margin-top: 50px;
+        }
+
+        .view-all-btn {
+            display: inline-block;
+            background-color: #c09b3d;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px 40px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .view-all-btn:hover {
+            background-color: #a88530;
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN (Mobile View)
+           ========================================= */
+        @media (max-width: 900px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr); /* Mobile par 2 columns per row */
+                gap: 15px;
+            }
+            
+            .section-header h2 {
+                font-size: 26px;
+            }
+
+            .product-info h4 {
+                font-size: 14px;
+            }
+
+            .product-info .price {
+                font-size: 14px;
+            }
+
+            .add-cart-btn {
+                padding: 8px 15px;
+                font-size: 11px;
+                width: 90%;
+            }
+        }
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.hero-banner {
+  position: relative;
+  width: 100%;
+  min-height: 450px;
+  /* Apni image ka path yahan lagayein */
+  background-image: url('media/trust.webp'); 
+  background-size: cover;
+  background-position: center right;
+  display: flex;
+  align-items: center;
+}
+
+.banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Gradient text ko clear dikhane ke liye */
+  background: linear-gradient(90deg, rgba(0, 80, 130, 0.6) 0%, rgba(0, 0, 0, 0.1) 100%);
+  z-index: 1;
+}
+
+.banner-container {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.banner-content {
+  max-width: 500px;
+  color: #ffffff;
+}
+
+.sub-heading {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  opacity: 0.9;
+}
+
+.main-heading {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  opacity: 0.95;
+}
+
+.shop-btn {
+  display: inline-block;
+  background-color: #ffffff;
+  color: #1a1a1a;
+  padding: 12px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.shop-btn:hover {
+  background-color: #f0f0f0;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Responsive design for mobile screens */
+@media (max-width: 768px) {
+  .hero-banner {
+    background-position: center;
+    text-align: center;
+    padding: 50px 0;
+  }
+  
+  .banner-content {
+    margin: 0 auto;
+  }
+
+  .main-heading {
+    font-size: 30px;
+  }
+}
+    </style>
+    <section class="hero-banner">
+  <div class="banner-overlay"></div>
+  <div class="banner-container">
+    <div class="banner-content">
+      <p class="sub-heading">Real experiences. Real results.</p>
+      <h1 class="main-heading">Trusted by 50,000+ <br>Happy Customer</h1>
+      <p class="description">
+        Join thousands of satisfied customers who rely on our quality, 
+        service, and consistency. With over 50,000 verified reviews, 
+        our community continues to grow every day.
+      </p>
+      <a href="#" class="shop-btn">Shop Now <i class="fas fa-shopping-cart"></i></a>
+    </div>
+  </div>
+</section>
+
+    <section class="featured-section">
+        <div class="section-header">
+            <h2>Featured Collection</h2>
+            <p>Experience our most loved, best-selling signature scents</p>
+        </div>
+
+        <div class="products-grid">
+            
+            <!-- Product 1 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="media/product_1.webp" alt="Golden Amber">
+                </div>
+                <div class="product-info">
+                    <h4>Golden Amber</h4>
+                    <p class="price">Rs. 4,500</p>
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="media/product_2.webp" alt="Midnight Oud">
+                </div>
+                <div class="product-info">
+                    <h4>Midnight Oud</h4>
+                    <p class="price">Rs. 5,200</p>
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="media/product_3.webp" alt="Velvet Rose">
+                </div>
+                <div class="product-info">
+                    <h4>Velvet Rose</h4>
+                    <p class="price">Rs. 3,800</p>
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="media/product_4.webp" alt="Ocean Breeze">
+                </div>
+                <div class="product-info">
+                    <h4>Ocean Breeze</h4>
+                    <p class="price">Rs. 4,000</p>
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 5 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="media/product_5.webp" alt="Royal Musk">
+                </div>
+                <div class="product-info">
+                    <h4>Royal Musk</h4>
+                    <p class="price">Rs. 6,500</p>
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 6 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="media/product_6.webp" alt="Sandalwood Secret">
+                </div>
+                <div class="product-info">
+                    <h4>Sandalwood Secret</h4>
+                    <p class="price">Rs. 4,200</p>
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 7 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="media/product_7.webp" alt="Citrus Charm">
+                </div>
+                <div class="product-info">
+                    <h4>Citrus Charm</h4>
+                    <p class="price">Rs. 3,500</p>
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+
+            <!-- Product 8 -->
+            <div class="product-card">
+                <div class="product-img-box">
+                    <img src="media/product_8.webp" alt="Dark Vanilla">
+                </div>
+                <div class="product-info">
+                    <h4>Dark Vanilla</h4>
+                    <p class="price">Rs. 4,800</p>
+                    <button class="add-cart-btn" onclick="addToCart()">Add to Cart</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- View All Products Button -->
+        <div class="view-all-container">
+            <a href="#" class="view-all-btn">View All Products</a>
+        </div>
+    </section>
+
+    <!-- Simple Script for Add to Cart Interaction -->
+    <script>
+        // Placeholder function for cart interaction
+        let cartCount = 0;
+        function addToCart() {
+            cartCount++;
+            // Assuming you have an element with class 'cart-badge' in your header
+            const badge = document.querySelector('.cart-badge');
+            if(badge) {
+                badge.textContent = cartCount;
+            }
+            alert("Item added to cart successfully!");
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        /* =========================================
+           PART 4: BRAND STORY SECTION
+           ========================================= */
+        .brand-story {
+            display: flex;
+            align-items: center;
+            background-color: #111111; /* Dark theme for luxury contrast */
+            color: #ffffff;
+        }
+
+        .story-image {
+            flex: 1;
+            height: 600px;
+        }
+
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .story-content {
+            flex: 1;
+            padding: 80px 10%;
+        }
+
+        .story-content h4 {
+            color: #c09b3d; /* Golden accent */
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .story-content h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            letter-spacing: 1px;
+        }
+
+        .story-content p {
+            font-size: 15px;
+            color: #cccccc;
+            line-height: 1.8;
+            margin-bottom: 40px;
+        }
+
+        .btn-outline-gold {
+            display: inline-block;
+            padding: 15px 35px;
+            border: 1px solid #c09b3d;
+            color: #c09b3d;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-gold:hover {
+            background-color: #c09b3d;
+            color: #111111;
+        }
+
+        /* =========================================
+           PART 4: TESTIMONIALS / REVIEWS
+           ========================================= */
+        .testimonials-section {
+            background-color: #f9f9f9; /* Soft off-white to contrast with the dark story */
+            padding: 80px 5%;
+            text-align: center;
+        }
+
+        .testimonials-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111111;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 50px;
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .review-card {
+            background-color: #ffffff;
+            padding: 40px 30px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .review-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .stars {
+            color: #c09b3d;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .review-text {
+            font-size: 15px;
+            color: #555555;
+            font-style: italic;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .reviewer-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #111111;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN (Mobile View)
+           ========================================= */
+        @media (max-width: 900px) {
+            .brand-story {
+                flex-direction: column;
+            }
+            
+            .story-image {
+                width: 100%;
+                height: 400px;
+            }
+
+            .story-content {
+                width: 100%;
+                padding: 50px 5%;
+                text-align: center;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+    <!-- ==========================================
+         PART 4: BRAND STORY
+         ========================================== -->
+    <section class="brand-story">
+        <div class="story-image">
+            <!-- Insert Brand Story Image URL here -->
+            <img src="media/about.webp" alt="The Art of Perfumery">
+        </div>
+        <div class="story-content">
+            <h4>Heritage & Craftsmanship</h4>
+            <h2>The Art Of True Perfumery</h2>
+            <p>Every bottle of True Fragrance is a masterpiece crafted with precision and passion. We source the rarest and finest ingredients from around the world to create scents that leave a lasting impression. Experience luxury that speaks for itself, designed for those who lead the trend.</p>
+            <a href="#" class="btn-outline-gold">Discover Our Journey</a>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PART 4: CUSTOMER REVIEWS
+         ========================================== -->
+    <section class="testimonials-section">
+        <div class="testimonials-header">
+            <h2>What Our Clients Say</h2>
+        </div>
+        <div class="reviews-grid">
+            
+            <!-- Review 1 -->
+            <div class="review-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"The Golden Amber is absolutely divine. It lasts all day and I constantly get compliments. Truly a premium experience from packaging to the scent."</p>
+                <h4 class="reviewer-name">- Sarah Ahmed</h4>
+            </div>
+
+            <!-- Review 2 -->
+            <div class="review-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <p class="review-text">"I was skeptical at first, but Midnight Oud blew me away. It has that rich, expensive feel that you usually only get from high-end designer brands."</p>
+                <h4 class="reviewer-name">- Bilal Khan</h4>
+            </div>
+
+            <!-- Review 3 -->
+            <div class="review-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                </div>
+                <p class="review-text">"Fast delivery and incredible presentation. The Velvet Rose is now my signature scent. Highly recommend True Fragrance to anyone looking for quality."</p>
+                <h4 class="reviewer-name">- Ayesha Tariq</h4>
+            </div>
+
+        </div>
+    </section>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        /* =========================================
+           PART 5: FAQs SECTION
+           ========================================= */
+        .faq-section {
+            padding: 80px 5%;
+            background-color: #ffffff; /* Clean white background */
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .faq-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111111;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .faq-header p {
+            font-size: 15px;
+            color: #666666;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #eeeeee;
+            margin-bottom: 15px;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            font-size: 16px;
+            font-weight: 600;
+            color: #111111;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .faq-question:hover {
+            color: #c09b3d; /* Golden hover */
+        }
+
+        .faq-question i {
+            font-size: 14px;
+            color: #c09b3d;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .faq-answer p {
+            padding-bottom: 20px;
+            font-size: 15px;
+            color: #555555;
+            line-height: 1.7;
+        }
+
+        /* Active State */
+        .faq-item.active .faq-question i {
+            transform: rotate(45deg); /* Plus icon turns into a cross */
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px; /* Adjust according to text length */
+        }
+
+        /* =========================================
+           PART 5: INSTAGRAM FEED SECTION
+           ========================================= */
+        .instagram-section {
+            background-color: #111111; /* Dark theme to transition into footer */
+            padding: 80px 0 0 0;
+            text-align: center;
+        }
+
+        .instagram-header {
+            margin-bottom: 40px;
+            padding: 0 5%;
+        }
+
+        .instagram-header h2 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .instagram-header p {
+            font-size: 15px;
+            color: #aaaaaa;
+        }
+
+        .instagram-header span {
+            color: #c09b3d;
+            font-weight: 600;
+        }
+
+        .ig-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            width: 100%;
+        }
+
+        .ig-post {
+            position: relative;
+            aspect-ratio: 1 / 1; /* Perfect squares */
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .ig-post img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .ig-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(17, 17, 17, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .ig-overlay i {
+            color: #ffffff;
+            font-size: 30px;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        /* Hover Effects */
+        .ig-post:hover img {
+            transform: scale(1.1);
+        }
+        .ig-post:hover .ig-overlay {
+            opacity: 1;
+        }
+        .ig-post:hover .ig-overlay i {
+            transform: translateY(0);
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN (Mobile View)
+           ========================================= */
+        @media (max-width: 768px) {
+            .faq-section {
+                padding: 60px 5%;
+            }
+            .faq-question {
+                font-size: 15px;
+            }
+            .ig-grid {
+                grid-template-columns: repeat(2, 1fr); /* Mobile par 2 columns */
+            }
+        }
+    </style>
+
+    <!-- ==========================================
+         PART 5: FAQs SECTION
+  
+         ========================================== -->
+   <section class="instagram-section">
+        <div class="instagram-header">
+            <h2>Join Our Community</h2>
+            <p>Follow us on Instagram <span>@TrueFragrance</span></p>
+        </div>
+
+        <div class="ig-grid">
+            <!-- IG Post 1 -->
+            <div class="ig-post">
+                <img src="media/social_1.webp" alt="Instagram Post 1">
+                <div class="ig-overlay"><i class="fab fa-instagram"></i></div>
+            </div>
+            <!-- IG Post 2 -->
+            <div class="ig-post">
+                <img src="media/social_2.webp" alt="Instagram Post 2">
+                <div class="ig-overlay"><i class="fab fa-instagram"></i></div>
+            </div>
+            <!-- IG Post 3 -->
+            <div class="ig-post">
+                <img src="media/social_3.webp" alt="Instagram Post 3">
+                <div class="ig-overlay"><i class="fab fa-instagram"></i></div>
+            </div>
+            <!-- IG Post 4 -->
+            <div class="ig-post">
+                <img src="media/social_4.webp" alt="Instagram Post 4">
+                <div class="ig-overlay"><i class="fab fa-instagram"></i></div>
+            </div>
+        </div>
+    </section>
+ 
+         <section class="faq-section">
+        <div class="faq-header">
+            <h2>Frequently Asked Questions</h2>
+            <p>Everything you need to know about our luxury fragrances</p>
+        </div>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Are your perfumes long-lasting?
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, all True Fragrance perfumes are formulated with high-grade oils (Parfum concentration), ensuring they last 12-24 hours on skin and even longer on fabric.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Are your ingredients vegan and cruelty-free?
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely. We are committed to ethical sourcing. Our fragrances are 100% vegan, cruelty-free, and crafted using high-quality plant-based ethanol.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    How long does shipping take?
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Standard delivery across Pakistan takes 3-5 business days. We offer free delivery on all orders above Rs. 5,000.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    Can I return or exchange a perfume?
+                    <i class="fas fa-plus"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>We accept returns within 7 days of delivery, provided the perfume is unused, sealed, and in its original premium packaging.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PART 5: INSTAGRAM FEED SECTION
+         ========================================== -->
+  
+
+    <!-- ==========================================
+         JAVASCRIPT FOR FAQs
+         ========================================== -->
+    <script>
+        function toggleFaq(element) {
+            const faqItem = element.parentElement;
+            
+            // Close all other open FAQs (Optional: if you only want one open at a time)
+            const allItems = document.querySelectorAll('.faq-item');
+            allItems.forEach(item => {
+                if (item !== faqItem && item.classList.contains('active')) {
+                    item.classList.remove('active');
+                }
+            });
+
+            // Toggle current FAQ
+            faqItem.classList.toggle('active');
+        }
+    </script>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+
+        /* =========================================
+           PART 6: CONTACT US SECTION (White BG)
+           ========================================= */
+        .contact-section {
+            background-color: #ffffff; /* White Background */
+            padding: 80px 5% 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .contact-header h2 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #111111;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .contact-header p {
+            font-size: 15px;
+            color: #666666;
+        }
+
+        .contact-wrapper {
+            display: flex;
+            gap: 50px;
+            justify-content: space-between;
+        }
+
+        /* Contact Info Details */
+        .contact-info {
+            flex: 1;
+            background-color: #f9f9f9;
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .info-item i {
+            font-size: 20px;
+            color: #c09b3d; /* Golden accent */
+            margin-top: 5px;
+        }
+
+        .info-item h4 {
+            font-size: 16px;
+            color: #111111;
+            margin-bottom: 5px;
+        }
+
+        .info-item p {
+            font-size: 14px;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            flex: 1.5;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group input, 
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #dddddd;
+            background-color: #ffffff;
+            color: #111111;
+            font-size: 14px;
+            font-family: 'Inter', sans-serif;
+            border-radius: 4px;
+            outline: none;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, 
+        .form-group textarea:focus {
+            border-color: #c09b3d;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: #111111;
+            color: #ffffff;
+            border: none;
+            padding: 15px 40px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #c09b3d;
+        }
+
+        /* =========================================
+           PART 6: NEWSLETTER SECTION (White BG)
+           ========================================= */
+        .newsletter-section {
+            background-color: #ffffff; /* White Background */
+            padding: 40px 5% 80px;
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #f9f9f9; /* Subtle off-white box for contrast */
+            padding: 50px 30px;
+            border-radius: 8px;
+            border: 1px solid #eeeeee;
+        }
+
+        .newsletter-content h3 {
+            color: #111111;
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .newsletter-content p {
+            color: #666666;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .newsletter-form input {
+            padding: 15px;
+            width: 65%;
+            border: 1px solid #dddddd;
+            font-size: 14px;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        .newsletter-form input:focus {
+            border-color: #c09b3d;
+        }
+
+        .newsletter-form button {
+            padding: 15px 30px;
+            background-color: #c09b3d;
+            color: #ffffff;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            background-color: #a88530;
+        }
+
+        /* =========================================
+           PART 6: FOOTER SECTION (Dark Theme)
+           ========================================= */
+        footer {
+            background-color: #111111;
+            color: #ffffff;
+            padding: 70px 5% 20px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto 50px;
+        }
+
+        .footer-brand img {
+            height: 45px;
+            margin-bottom: 20px;
+        }
+
+        .footer-brand p {
+            color: #999999;
+            font-size: 13.5px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            max-width: 320px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 12px;
+        }
+
+        .social-icons a {
+            color: #ffffff;
+            background-color: #222222;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background-color: #c09b3d;
+            color: #111111;
+        }
+
+        .footer-links h4 {
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links ul li a {
+            color: #999999;
+            text-decoration: none;
+            font-size: 13.5px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links ul li a:hover {
+            color: #c09b3d;
+        }
+
+        /* Copyright Bar */
+        .footer-bottom {
+            border-top: 1px solid #222222;
+            padding-top: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #666666;
+            font-size: 13px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .payment-methods {
+            display: flex;
+            gap: 15px;
+            font-size: 22px;
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN (Mobile View)
+           ========================================= */
+        @media (max-width: 900px) {
+            .contact-wrapper {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+            .newsletter-form input, 
+            .newsletter-form button {
+                width: 100%;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 35px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+
+
+    <!-- ==========================================
+         PART 6: CONTACT US SECTION (White BG)
+         ========================================== -->
+    <section class="contact-section">
+        <div class="contact-header">
+            <h2>Get In Touch</h2>
+            <p>We are here to assist you with any inquiries regarding our luxury fragrances.</p>
+        </div>
+
+        <div class="contact-wrapper">
+            <!-- Contact Details -->
+            <div class="contact-info">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4>Visit Us</h4>
+                        <p>True Fragrance Headquarters<br>Wah Cantt, Punjab, Pakistan</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email Us</h4>
+                        <p>support@truefragrance.com<br>info@truefragrance.com</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <h4>Call Us</h4>
+                        <p>+92 300 0000000<br>Mon - Sat, 9:00 AM to 6:00 PM</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <form onsubmit="event.preventDefault(); alert('Message sent successfully!');">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject">
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="How can we help you?" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PART 6: NEWSLETTER SECTION (White BG)
+         ========================================== -->
+    <section class="newsletter-section">
+        <div class="newsletter-content">
+            <h3>Join The VIP Club</h3>
+            <p>Subscribe to our newsletter for exclusive offers, new arrivals, and 15% off your first purchase.</p>
+            <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ==========================================
+         PART 6: FOOTER (Dark BG)
+         ========================================== -->
+    <footer>
+        <div class="footer-container">
+            <!-- Brand Info -->
+            <div class="footer-brand">
+                <!-- Insert Logo Image URL here -->
+                <img src="media/logo_1.webp" alt="True Fragrance">
+                <p>Crafting memories through scent. True Fragrance brings you the finest selection of premium perfumes and attars globally sourced for absolute perfection.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+
+            <!-- Shop Links -->
+            <div class="footer-links">
+                <h4>Shop</h4>
+                <ul>
+                    <li><a href="#">Best Sellers</a></li>
+                    <li><a href="#">For Him</a></li>
+                    <li><a href="#">For Her</a></li>
+                    <li><a href="#">Luxury Candles</a></li>
+                </ul>
+            </div>
+
+            <!-- Support Links -->
+            <div class="footer-links">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Track Order</a></li>
+                    <li><a href="#">Shipping Policy</a></li>
+                    <li><a href="#">Return & Exchange</a></li>
+                    <li><a href="#">FAQs</a></li>
+                </ul>
+            </div>
+
+            <!-- Company Links -->
+            <div class="footer-links">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">Our Story</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Bottom Footer (Copyright & Payments) -->
+        <div class="footer-bottom">
+            <p>&copy; 2026 True Fragrance. All Rights Reserved.</p>
+            <div class="payment-methods">
+                <i class="fab fa-cc-visa"></i>
+                <i class="fab fa-cc-mastercard"></i>
+                <i class="fab fa-cc-paypal"></i>
+                <i class="fab fa-cc-amex"></i>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
